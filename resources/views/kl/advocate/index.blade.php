@@ -1,0 +1,51 @@
+  <!--BANNER START-->
+  <div id="inner-banner">
+    <div class="container">
+      <h1>@{repository.page.title}</h1>
+      <ol class="breadcrumb breadcrumbA">
+        <li><a href="../../../">Home</a></li>
+        <li class="active">@{repository.page.title}</li>
+      </ol>
+    </div>
+  </div>
+  <!--BANNER END--> 
+
+  <!--MAIN START-->
+  <div id="main"> 
+    
+    <!--ATTORNEYS TEAM SECTION START-->
+    <section class="cp-attorneys-team cp-attorneys-team-space padding-top-60">
+      <div class="container">
+        <div class="cp-heading-1">
+          <h2>Attorneys <span>Team</span></h2>
+        </div>
+        <div class="row">
+          @{foreach advocate in repository.data.advocate}
+          <div class="col-md-3 col-sm-6">
+            <div class="cp-attorneys-style-1">
+              <div class="frame"> <a href="../../../advocates/@{advocate.key}"><img src="../../../images/advocates/@{advocate.value.photo}" alt="img"></a>
+                <div class="caption">
+                  <div class="holder">
+                    <ul>
+                      <li><a href="https://twitter.com/@{advocate.value.social.tw}"><i class="fa fa-twitter"></i></a></li>
+                      <li><a href="https://facebook.com/@{advocate.value.social.fb}"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="https://linkedin.com/@{advocate.value.social.li}"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                    <p>
+                      @{advocate.value.caption}
+                    </p>
+                    <a href="../../../advocates/@{advocate.key}" class="btn-style-1">Read Profile</a> </div>
+                </div>
+              </div>
+              <div class="cp-text-box">
+                <h3><a href="../../../advocates/@{advocate.key}">@{advocate.value.name}</a></h3>
+                <em>@{advocate.designation}</em></div>
+            </div>
+          </div>
+          @{end}
+        </div>
+      </div>
+    </section>
+    <!--ATTORNEYS TEAM SECTION END--> 
+  </div>
+  <!--MAIN END--> 

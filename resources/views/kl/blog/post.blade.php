@@ -1,0 +1,186 @@
+  <!--BANNER START-->
+  <div id="inner-banner">
+    <div class="container">
+      <h1>@{repository.page.title}</h1>
+      <ol class="breadcrumb">
+        <li><a href="../../../">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li class="active">@{repository.page.title}</li>
+      </ol>
+    </div>
+  </div>
+  <!--BANNER END--> 
+  
+  <!--MAIN START-->
+  <div id="main"> 
+    
+    <!--BLOG SECTION START-->
+    <section class="cp-blog padding-top-60">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="cp-post-box">
+              <div class="frame cp-img-effect-1"><a href="https://@{repository.data.server.host}/blog/@{repository.entity}"><img height="350px" width="850px" src="../../../images/posts/@{repository.data.blog[repository.entity].image}" alt="img"></a></div>
+              <div class="cp-text-box">
+                <h2><a href="#">@{repository.page.title}</a></h2>
+                <div class="detail-row">
+                  <ul>
+                    <li><a href="https://@{repository.data.server.host}/blog/@{repository.entity}">@{repository.data.blog[repository.entity].date}</a></li>
+                    <li>By: <a href="../../../advocate/@{repository.data.blog[repository.entity].author}">@{repository.data.advocate[repository.data.blog[repository.entity].author].name}</a></li>
+                    <!--<li><a href="#">20 Comments</a></li>-->
+                  </ul>
+                </div>
+                @{!repository.data.blog[repository.entity].postContentMDd}
+                <div class="cp-share-post-row"> <strong class="title">Share Post:</strong>
+                  <ul>
+                    <li><a target="_blank" href="https://www.facebook.com/sharer.php?u=https://@{repository.data.server.host}/blog/@{repository.entity}"><i class="fa fa-facebook"></i></a></li>
+                    <li><a target="_blank" href="https://twitter.com/intent/tweet?url=https://@{repository.data.server.host}/blog/@{repository.entity}&text=@{repository.page.title}&via=kochilaw&hashtags=kochilaw,plcc"><i class="fa fa-twitter"></i></a></li>
+                    <li><a target="_blank" href="https://plus.google.com/share?url=https://@{repository.data.server.host}/blog/@{repository.entity}"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/shareArticle?url=https://@{repository.data.server.host}/blog/@{repository.entity}&title=@{repository.page.title}"><i class="fa fa-linkedin"></i></a></li>
+                    <!--<li><a href=""><i class="fa fa-dribbble"></i></a></li>-->
+                    <!--<li><a href=""><i class="fa fa-instagram"></i></a></li>-->
+                    <!--<li><a href=""><i class="fa fa-pinterest-p"></i></a></li>-->
+                  </ul>
+                </div>
+                <div class="cp-author-box">
+                  <h3>About Post Author</h3>
+                  <div class="thumb"><a href="../../../advocate/@{repository.data.blog[repository.entity].author}"><img height="85px" width="85px" class="thumbscale" src="../../../images/advocates/@{repository.data.advocate[repository.data.blog[repository.entity].author].photo}" alt="@{repository.data.advocate[repository.data.blog[repository.entity].author].name}"></a></div>
+                  <div class="text-box"><strong class="name">@{repository.data.advocate[repository.data.blog[repository.entity].author].shortname}</strong>
+                  <p>@{repository.data.advocate[repository.data.blog[repository.entity].author].caption}</p>
+                  </div>
+                  <!--
+                  <h3>Write a Comment</h3>
+                  <form action="form-3.php" method="post">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <input type="text" name="name" placeholder="First Name *" required pattern="[a-zA-Z ]+">
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="name" placeholder="Last Name *" required pattern="[a-zA-Z ]+">
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="email" placeholder="Your Email *" required pattern="^[a-zA-Z0-9-\_.]+@[a-zA-Z0-9-\_.]+\.[a-zA-Z0-9.]{2,5}$">
+                      </div>
+                      <div class="col-md-12">
+                        <textarea cols="10" rows="10" placeholder="Comment *" required></textarea>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="submit" value="Post Comment">
+                      </div>
+                    </div>
+                  </form>
+                  -->
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <aside>
+              <div class="cp-sidebar">
+                <!--
+                <div class="cp-sidebar-box">
+                  <h3>Search</h3>
+                  <form action="#">
+                    <input type="text" placeholder="Type your text here" required>
+                    <button><i class="fa fa-search"></i></button>
+                  </form>
+                </div>
+                <div class="cp-sidebar-box">
+                  <h3>Areas of Practice</h3>
+                  <div class="cp-practice-area">
+                    <ul>
+                      <li><a href="#"><i class="fa fa-bank"></i>Corporate</a></li>
+                      <li><a href="#"><i class="fa fa-medkit"></i>Personal Injury</a></li>
+                      <li><a href="#"><i class="fa fa-building-o"></i>Family Law Consultant</a></li>
+                      <li><a href="#"><i class="fa fa-car"></i>Serious Car Crash</a></li>
+                      <li><a href="#"><i class="fa fa-money"></i>Money Laundering</a></li>
+                      <li><a href="#"><i class="fa fa-truck"></i>Truck Accident</a></li>
+                      <li><a href="#"><i class="fa fa-intersex"></i>Sexual Abuse</a></li>
+                      <li><a href="#"><i class="fa fa-bug"></i>Drug Offences</a></li>
+                      <li><a href="#"><i class="fa fa-paper-plane-o"></i>Shoplifting</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="cp-sidebar-box">
+                  <h3>Meet Attorneys</h3>
+                  <div class="cp-attorneys-box">
+                    <div id="cp-attorneys-slider" class="owl-carousel owl-theme">
+                      <div class="item">
+                        <div class="holder">
+                          <div class="frame"><a href="#"><img src="images/blog/attorneys-img-1.jpg" alt="img"></a></div>
+                          <strong class="name">Lee Stewart</strong> <b>Criminal Lawyer</b> </div>
+                      </div>
+                      <div class="item">
+                        <div class="holder">
+                          <div class="frame"><a href="#"><img src="images/blog/attorneys-img-2.jpg" alt="img"></a></div>
+                          <strong class="name">Aleen Jhon</strong> <b>Lawyer</b> </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cp-sidebar-box">
+                  <h3>Legal News</h3>
+                  <div class="cp-legal-news">
+                    <ul>
+                      <li><a href="#">Consetetur sadipscing elit sed<i class="fa fa-angle-double-right"></i></a></li>
+                      <li><a href="#">Magna aliquyam erat, sed <i class="fa fa-angle-double-right"></i></a></li>
+                      <li><a href="#">Qui sequitur mutationem <i class="fa fa-angle-double-right"></i></a></li>
+                      <li><a href="#">Magna aliquyam erat, sed <i class="fa fa-angle-double-right"></i></a></li>
+                      <li><a href="#">Qui sequitur mutationem <i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                -->
+                <div class="cp-sidebar-box">
+                  <h2>Other Posts</h2>
+                  <div class="cp-recent-post">
+                    <ul>
+
+                      @{foreach post in repository.data.blog}
+                        @{if post.key !== 'feature'}
+                          @{if post.key !== repository.entity}
+                            <li>
+                              <div class="frame cp-img-effect-1">
+                                <a href="../../../blog/@{post.key}">
+                                  <img 
+                                    src="../../../images/posts/@{repository.data.blog[post.key].image}"
+                                    alt="img"
+                                    width="100px"
+                                    height="100px">
+                                </a>
+                              </div>
+                              <br>
+                              <a href="../../../blog/@{post.key}"><h3>@{repository.data.blog[post.key].title}</h3></a>
+                              @{repository.data.blog[post.key].date} // <a href="../../../advocates/@{post.value.author}">@@{post.value.author}</a>
+                            </li>
+                          @{fi}
+                        @{fi}
+                      @{end}
+
+                      <!--
+                      <li>
+                        <div class="frame cp-img-effect-1"><a href="#"><img src="images/blog/recent-post-img-1.jpg" alt="img"></a></div>
+                        <a href="#">Sexual Assault
+                        on College Campuses</a> <span>23 November, 2015</span> <b>By: John Patrick</b> </li>
+                      <li>
+                        <div class="frame cp-img-effect-1"><a href="#"><img src="images/blog/recent-post-img-2.jpg" alt="img"></a></div>
+                        <a href="#">Pleasure to graduate
+                        with excellent!</a> <span>23 November, 2015</span> <b>By: John Patrick</b> </li>
+                      <li>
+                        <div class="frame cp-img-effect-1"><a href="#"><img src="images/blog/recent-post-img-3.jpg" alt="img"></a></div>
+                        <a href="#">Pleasure to graduate
+                        with excellent!</a> <span>23 November, 2015</span> <b>By: John Patrick</b> </li>
+                      -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--BLOG SECTION END--> 
+  </div>
+  <!--MAIN END--> 
