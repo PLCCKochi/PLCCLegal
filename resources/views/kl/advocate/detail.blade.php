@@ -1,16 +1,16 @@
-  <!--BANNER START-->
-  <div id="inner-banner">
-    <div class="container">
-      <h1>@{repository.page.title}</h1>
-      <ol class="breadcrumb">
-        <li><a href="../../../">Home</a></li>
+@extends('kl.layout.master')
+@section('title', 'Advocate '.$model->name)
+@section('company', 'PLCC Legal')
+@section('content')
+  @component('kl.component.search')
+  @endcomponent
+  @component('kl.component.banner')
+    @slot('pagetitle')
+      {{$model->name}}
+    @endslot
         <li><a href="../../../advocates">Advocates</a></li>
-        <li class="active">@{repository.page.title}</li>
-      </ol>
-    </div>
-  </div>
-  <!--BANNER END--> 
-  
+        <li class="active">{{$model->name}}</li>
+  @endcomponent
   <!--MAIN START-->
   <div id="main"> 
     <!--ATTORNEYS PROFILE START-->
@@ -21,27 +21,27 @@
             <div class="row">
               <div class="col-md-4 col-sm-6">
                 <div class="cp-frame-box">
-                  <div class="frame"><img src="../../../images/advocates/@{repository.data.advocate[repository.entity].photo}" alt="img"></div>
+                  <div class="frame"><img src="../../../{{$model->photo}}" alt="img"></div>
                 </div>
               </div>
               <div class="col-md-8 col-sm-6">
                 <div class="cp-text-box">
-                  <h3>@{repository.page.title}</h3>
-                  <span>@{repository.data.advocate[repository.entity].title}</span>
+                  <h3>{{$model->name}}</h3>
+                  <span>{{$model->caption}}</span>
                   <address>
                   <ul>
-                    <li><i class="fa fa-phone"></i>@{repository.data.advocate[repository.entity].contact.personal}</li>
-                    <li><i class="fa fa-building-o"></i>@{repository.data.advocate[repository.entity].contact.office} [@{repository.data.advocate[repository.entity].contact.office_ext}]</li>
-                    <li><i class="fa fa-envelope-o"></i><a href="mailto:@{repository.data.advocate[repository.entity].contact.email}@@{repository.data.server.host}">@{repository.data.advocate[repository.entity].contact.email}@@{repository.data.server.host}</a></li>
-                    <!--<li><i class="fa fa-skype"></i></li>
-                    <li><i class="fa fa-globe"></i><a href="#">www.lawyer.com</a></li>-->
+                    <li><i class="fa fa-phone"></i><a href="tel:{{$model->mobile}}">{{$model->mobile}}</a></li>
+                    <li><i class="fa fa-building-o"></i><a href="tel:{{$model->office}}">{{$model->office}}</a></li>
+                    <li><i class="fa fa-envelope-o"></i><a href="mailto:{{$model->email}}">{{$model->email}}</a></li>
+                    <li><i class="fa fa-skype"></i><a href="skype:{{$model->skype}}">{{$model->skype}}</a></li>
+                    <!--<li><i class="fa fa-globe"></i><a href="#">www.lawyer.com</a></li>-->
                   </ul>
                   </address>
                   <div class="attorney-details-social">
                     <ul>
-                      <li><a href="https://twitter.com/@{repository.data.advocate[repository.entity].social.tw}"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="https://facebook.com/@{repository.data.advocate[repository.entity].social.fb}"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="https://linkedin.com/@{repository.data.advocate[repository.entity].social.li}"><i class="fa fa-linkedin"></i></a></li>
+                      <li><a href="https://twitter.com/{{$model->tw}}"><i class="fa fa-twitter"></i></a></li>
+                      <li><a href="https://facebook.com/{{$model->fb}}"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="https://linkedin.com/{{$model->li}}"><i class="fa fa-linkedin"></i></a></li>
                       <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
                     </ul>
                   </div>
@@ -54,9 +54,10 @@
       <div class="cp-experience padding-btm-60">
         <div class="container">
           <h3>Professional Experience</h3>
-          @{!repository.data.advocate[repository.entity].proexpContent}
+          {!! $model->proexp !!}
         </div>
       </div>
+      <!--
       <div class="accordions-row">
         <div class="container">
           <div class="row">
@@ -135,9 +136,11 @@
           </div>
         </div>
       </div>
+      -->
+      <!--
       <div class="cp-clients-row cp-client-section">
         <div class="container">
-          <h3>@{model.shortname}’s Clients</h3>
+          <h3>{{$model->shortname}}’s Clients</h3>
           <ul>
             @{foreach client in model.clients}
               <li>
@@ -149,10 +152,11 @@
           </ul>
         </div>
       </div>
+      -->
       <div class="contact-form-area">
         <div class="cp-author-box">
           <div class=" container">
-            <h2>Contact with @{model.shortname}</h2>
+            <h2>Contact with {{$model->shortname}}</h2>
             <form action="form-2.php" method="post">
               <div class="row">
                 <div class="col-md-4">
@@ -179,3 +183,4 @@
     <!--ATTORNEYS PROFILE END--> 
   </div>
   <!--MAIN END--> 
+@endsection

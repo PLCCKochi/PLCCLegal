@@ -7,8 +7,7 @@
           <div class="col-md-6">
             <div class="left-box">
               <ul>
-                <li>Phone: <a href="tel:@{repository.data.company.number}">@{repository.data.company.number}</a></li>
-                <li>Email: <a href="mailto:@{repository.data.company.email_generic}@@{repository.data.server.host}">@{repository.data.company.email_generic}@@{repository.data.server.host}</a></li>
+                {{$contact}}
               </ul>
             </div>
           </div>
@@ -43,9 +42,7 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
               <ul id="nav" class="navbar-nav">
-                @{foreach item in repository.data.sitemap}
-                  <li><a href="@{item.value}">@{item.key}</a></li>
-                @{end}
+                {!! $slot !!}
               </ul>
             </div>
           </nav>

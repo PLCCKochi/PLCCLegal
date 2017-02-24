@@ -19,7 +19,7 @@ class Post extends Model {
 	protected $primaryKey = 'id';
 	//protected $guarded = [];
 	protected $hidden = ['id'];
-	protected $fillable = ["title","photo","content","stamp","advocate_id"];
+	protected $fillable = ["title","topic","photo","content","stamp","advocate_id","featured"];
 	public $timestamps = true;
 
 	/*
@@ -33,7 +33,7 @@ class Post extends Model {
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
-    public function Advocates()
+    public function advocate()
     {
         return $this->belongsTo('App\Models\Advocate');
     }

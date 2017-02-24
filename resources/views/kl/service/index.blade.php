@@ -1,35 +1,36 @@
-  <!--BANNER START-->
-  <div id="inner-banner">
-    <div class="container">
-      <h1>@{repository.page.title}</h1>
-      <ol class="breadcrumb">
-        <li><a href="../../../">Home</a></li>
-        <li class="active">@{repository.page.title}</li>
-      </ol>
-    </div>
-  </div>
-  <!--BANNER END--> 
-  
+@extends('kl.layout.master')
+@section('title', 'Services')
+@section('company', 'PLCC Legal')
+@section('content')
+  @component('kl.component.search')
+  @endcomponent
+  @component('kl.component.banner')
+    @slot('pagetitle')
+      Services
+    @endslot
+        <li class="active">Services</li>
+  @endcomponent
   <!--MAIN START-->
   <div id="main"> 
-    
     <!--PRACTICE AREA SECTION START-->
     <section class="cp-practice-area cp-practice-space padding-top-60">
       <div class="container">
         <div class="row">
-          @{foreach service in model}
+          @foreach($services as $service)
           <div class="col-md-3">
             <div class="cp-box">
-              <div class="frame"> <img class="serviceimg" src="../../../images/services/@{service.value.image}" alt="img">
-                <div class="caption"><a href="../../../services/@{service.key}" class="link"><i class="fa fa-link"></i></a></div>
+              <div class="frame"> <img class="serviceimg" src="../../../{{$service->image}}" alt="img">
+                <div class="caption"><a href="../../../services/{{$service->id}}" class="link"><i class="fa fa-link"></i></a></div>
               </div>
               <div class="cp-text-box">
-                <h3><a href="../../../services/@{service.key}">@{service.value.title}</a></h3>
-                @{!service.value.infoExcerpt}
-                <a href="../../../services/@{service.key}" class="btn-style-1">Read More</a> </div>
+                <h3><a href="../../../services/{{$service->id}}">{{$service->name}}</a></h3>
+                <div class="shaved02x">
+                  <!-- Content -->
+                </div><br>
+                <a href="../../../services/{{$service->id}}" class="btn-style-1">Read More</a> </div>
             </div>
           </div>
-          @{end}
+          @endforeach
         </div>
         <!--PAGINATION START-->
         <!--
@@ -51,3 +52,4 @@
     <!--PRACTICE AREA SECTION END--> 
   </div>
   <!--MAIN END-->
+@endsection

@@ -17,14 +17,15 @@ class PostCrudController extends CrudController {
 
         $this->crud->setColumns([
         	'title',
-        	/*[
+        	'topic',
+        	[
         		'name'=>'advocate_id',
 				'label' => "Author", // Table column heading
 				'type' => "select",
-				'entity' => 'Advocates', // the method that defines the relationship in your Model
-				'attribute' => "shortname", // foreign key attribute that is shown to user
+				'entity' => 'advocate', // the method that defines the relationship in your Model
+				'attribute' => "name", // foreign key attribute that is shown to user
 				'model' => "App\Models\Advocate", // foreign key model
-        	],*/
+        	],
         	[
         		'name'=>'stamp',
         		'label'=>'Date'
@@ -35,6 +36,17 @@ class PostCrudController extends CrudController {
 			'label' => "Post Title",
 			'type' => 'text',
 			'suffix' => 'eg. How to evade TAX !'
+		]);
+		$this->crud->addField([
+		    'name' => 'featured',
+		    'label' => 'Featured',
+		    'type' => 'checkbox'
+		]);
+        $this->crud->addField([
+			'name' => 'topic',
+			'label' => "Post Topic",
+			'type' => 'text',
+			'suffix' => 'eg. TAX'
 		]);
 		$this->crud->addField([ // image
 		    'label' => "Post Image",
@@ -60,7 +72,7 @@ class PostCrudController extends CrudController {
 			'name' => 'advocate_id',
 			'label' => "Post Author",
 			'type' => 'select2',
-			'entity' => 'Advocates', // the method that defines the relationship in your Model
+			'entity' => 'advocate', // the method that defines the relationship in your Model
 			'attribute' => 'name', // foreign key attribute that is shown to user
 			'model' => "App\Models\Advocate" // foreign key model
 		]);

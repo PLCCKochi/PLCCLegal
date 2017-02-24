@@ -5164,13 +5164,7 @@ code {
 	background-color: #ddd;
 }
 
-#dotdotdotwrapper{
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.modal {
+.loadingmodal {
     display:    none;
     position:   fixed;
     z-index:    1000;
@@ -5178,7 +5172,7 @@ code {
     left:       0;
     height:     100%;
     width:      100%;
-    background: rgba( 255, 255, 255, .8 ) 
+    background: rgba( 255, 255, 255, .95 ) 
                 url('http://i.stack.imgur.com/FhHRx.gif') 
                 50% 50% 
                 no-repeat;
@@ -5192,6 +5186,6 @@ body.loading {
 
 /* Anytime the body has the loading class, our
    modal element will be visible */
-body.loading .modal {
+body.loading .loadingmodal {
     display: block;
 }

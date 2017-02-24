@@ -33,7 +33,7 @@ class Testimonial extends Model {
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
-    public function Clients()
+    public function client()
     {
         return $this->belongsTo('App\Models\Client');
     }

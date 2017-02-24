@@ -16,11 +16,10 @@ class TestimonialCrudController extends CrudController {
         $this->crud->setEntityNameStrings('testimonial', 'testimonials');
         $this->crud->setColumns([
         	[
-				// 1-n relationship
 				'label' => "Company", // Table column heading
 				'type' => "select",
 				'name' => 'client_id', // the column that contains the ID of that connected entity;
-				'entity' => 'Clients', // the method that defines the relationship in your Model
+				'entity' => 'client', // the method that defines the relationship in your Model
 				'attribute' => "company", // foreign key attribute that is shown to user
 				'model' => "App\Models\Client", // foreign key model
 			],
@@ -28,19 +27,15 @@ class TestimonialCrudController extends CrudController {
         		"name"=>"featured",
         		"label"=>"Featured",
         		"type"=>'boolean'
-        	],
-        	[
-        		"name"=>"featured",
-        		"label"=>"Featured",
-        		"type"=>'boolean'
         	]
         ]);
+        //$this->crud->removeColumn('client_id');
         //"client_id","testimonial","featured","priority"
         $this->crud->addField([
 			'name' => 'client_id',
 			'label' => "Company",
 			'type' => 'select2',
-			'entity' => 'Client', // the method that defines the relationship in your Model
+			'entity' => 'client', // the method that defines the relationship in your Model
 			'attribute' => 'company', // foreign key attribute that is shown to user
 			'model' => "App\Models\Client" // foreign key model
 		]);
@@ -60,7 +55,7 @@ class TestimonialCrudController extends CrudController {
 			'label' => "Testimonial",
 			'type' => 'summernote'
 		]);
-
+		$this->crud->enableExportButtons();
     }
 
 	public function store(StoreRequest $request)

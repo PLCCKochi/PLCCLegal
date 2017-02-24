@@ -1,53 +1,55 @@
-  <!--BANNER START-->
-  <div id="inner-banner">
-    <div class="container">
-      <h1>@{repository.page.title}</h1>
-      <ol class="breadcrumb">
-        <li><a href="../../../">Home</a></li>
-        <li><a href="#">Blog</a></li>
-        <li class="active">@{repository.page.title}</li>
-      </ol>
-    </div>
-  </div>
-  <!--BANNER END--> 
-  
+@extends('kl.layout.master')
+@section('title', $model->title)
+@section('company', 'PLCC Legal')
+@section('content')
+  @component('kl.component.search')
+  @endcomponent
+  @component('kl.component.banner')
+    @slot('pagetitle')
+      {{$model->title}}
+    @endslot
+        <li><a href="../../../blog">Blog</a></li>
+        <li class="active">{{$model->title}}</li>
+  @endcomponent  
   <!--MAIN START-->
   <div id="main"> 
-    
     <!--BLOG SECTION START-->
     <section class="cp-blog padding-top-60">
       <div class="container">
         <div class="row">
           <div class="col-md-8">
             <div class="cp-post-box">
-              <div class="frame cp-img-effect-1"><a href="https://@{repository.data.server.host}/blog/@{repository.entity}"><img height="350px" width="850px" src="../../../images/posts/@{repository.data.blog[repository.entity].image}" alt="img"></a></div>
+              <div class="frame cp-img-effect-1"><a href="../../../blog/{{$model->id}}"><img height="350px" width="850px" src="../../../{{$model->photo}}" alt="img"></a></div>
               <div class="cp-text-box">
-                <h2><a href="#">@{repository.page.title}</a></h2>
+                <h2><a href="#">{{$model->title}}</a></h2>
                 <div class="detail-row">
                   <ul>
-                    <li><a href="https://@{repository.data.server.host}/blog/@{repository.entity}">@{repository.data.blog[repository.entity].date}</a></li>
-                    <li>By: <a href="../../../advocate/@{repository.data.blog[repository.entity].author}">@{repository.data.advocate[repository.data.blog[repository.entity].author].name}</a></li>
+                    <li><a href="../../../blog/{{$model->id}}">{{$model->stamp}}</a></li>
+                    <li>By: <a href="../../../advocate/{{$model->advocate_id}}">Advocate Name</a></li>
                     <!--<li><a href="#">20 Comments</a></li>-->
                   </ul>
                 </div>
-                @{!repository.data.blog[repository.entity].postContentMDd}
+
+                {!!$model->content!!}
                 <div class="cp-share-post-row"> <strong class="title">Share Post:</strong>
                   <ul>
-                    <li><a target="_blank" href="https://www.facebook.com/sharer.php?u=https://@{repository.data.server.host}/blog/@{repository.entity}"><i class="fa fa-facebook"></i></a></li>
-                    <li><a target="_blank" href="https://twitter.com/intent/tweet?url=https://@{repository.data.server.host}/blog/@{repository.entity}&text=@{repository.page.title}&via=kochilaw&hashtags=kochilaw,plcc"><i class="fa fa-twitter"></i></a></li>
-                    <li><a target="_blank" href="https://plus.google.com/share?url=https://@{repository.data.server.host}/blog/@{repository.entity}"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/shareArticle?url=https://@{repository.data.server.host}/blog/@{repository.entity}&title=@{repository.page.title}"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/sharer.php?u={!!$settings['cwebsite']!!}/blog/{{$model->id}}"><i class="fa fa-facebook"></i></a></li>
+                    <li><a target="_blank" href="https://twitter.com/intent/tweet?url={!!$settings['cwebsite']!!}/blog/{{$model->id}}&text=@{repository.page.title}&via=kochilaw&hashtags=kochilaw,plcc"><i class="fa fa-twitter"></i></a></li>
+                    <li><a target="_blank" href="https://plus.google.com/share?url={!!$settings['cwebsite']!!}/blog/{{$model->id}}"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/shareArticle?url={!!$settings['cwebsite']!!}/blog/{{$model->id}}&title=@{repository.page.title}"><i class="fa fa-linkedin"></i></a></li>
                     <!--<li><a href=""><i class="fa fa-dribbble"></i></a></li>-->
                     <!--<li><a href=""><i class="fa fa-instagram"></i></a></li>-->
                     <!--<li><a href=""><i class="fa fa-pinterest-p"></i></a></li>-->
                   </ul>
                 </div>
+                <!--
                 <div class="cp-author-box">
                   <h3>About Post Author</h3>
                   <div class="thumb"><a href="../../../advocate/@{repository.data.blog[repository.entity].author}"><img height="85px" width="85px" class="thumbscale" src="../../../images/advocates/@{repository.data.advocate[repository.data.blog[repository.entity].author].photo}" alt="@{repository.data.advocate[repository.data.blog[repository.entity].author].name}"></a></div>
                   <div class="text-box"><strong class="name">@{repository.data.advocate[repository.data.blog[repository.entity].author].shortname}</strong>
                   <p>@{repository.data.advocate[repository.data.blog[repository.entity].author].caption}</p>
                   </div>
+                  -->
                   <!--
                   <h3>Write a Comment</h3>
                   <form action="form-3.php" method="post">
@@ -132,6 +134,7 @@
                   </div>
                 </div>
                 -->
+                <!--
                 <div class="cp-sidebar-box">
                   <h2>Other Posts</h2>
                   <div class="cp-recent-post">
@@ -142,9 +145,9 @@
                           @{if post.key !== repository.entity}
                             <li>
                               <div class="frame cp-img-effect-1">
-                                <a href="../../../blog/@{post.key}">
+                                <a href="../../../blog/">
                                   <img 
-                                    src="../../../images/posts/@{repository.data.blog[post.key].image}"
+                                    src="{!! $model->photo !!}"
                                     alt="img"
                                     width="100px"
                                     height="100px">
@@ -158,7 +161,6 @@
                         @{fi}
                       @{end}
 
-                      <!--
                       <li>
                         <div class="frame cp-img-effect-1"><a href="#"><img src="images/blog/recent-post-img-1.jpg" alt="img"></a></div>
                         <a href="#">Sexual Assault
@@ -171,10 +173,11 @@
                         <div class="frame cp-img-effect-1"><a href="#"><img src="images/blog/recent-post-img-3.jpg" alt="img"></a></div>
                         <a href="#">Pleasure to graduate
                         with excellent!</a> <span>23 November, 2015</span> <b>By: John Patrick</b> </li>
-                      -->
+                      
                     </ul>
                   </div>
                 </div>
+                -->
               </div>
             </aside>
           </div>
@@ -184,3 +187,4 @@
     <!--BLOG SECTION END--> 
   </div>
   <!--MAIN END--> 
+@endsection

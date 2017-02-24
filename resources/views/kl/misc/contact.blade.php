@@ -1,14 +1,15 @@
-  <!--BANNER START-->
-  <div id="inner-banner">
-    <div class="container">
-      <h1>@{repository.page.title}</h1>
-      <ol class="breadcrumb">
-        <li><a href="../../../">Home</a></li>
-        <li class="active">@{repository.page.title}</li>
-      </ol>
-    </div>
-  </div>
-  <!--BANNER END--> 
+@extends('kl.layout.master')
+@section('title', 'Clients')
+@section('company', 'PLCC Legal')
+@section('content')
+  @component('kl.component.search')
+  @endcomponent
+  @component('kl.component.banner')
+    @slot('pagetitle')
+      Our Clients
+    @endslot
+        <li class="active">Clients</li>
+  @endcomponent
   <!--MAIN START-->
   <div id="main"> 
     <!--CONTACT STYLE 1 START-->
@@ -67,3 +68,4 @@
     <!--CONTACT STYLE 1 END--> 
   </div>
   <!--MAIN END--> 
+@endsection

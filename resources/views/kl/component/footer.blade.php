@@ -5,16 +5,9 @@
       <div class="container">
         <div class="holder">
           <ul id="cp-footer-twitter">
-            @{foreach tweet in repository.data.tweets}
-              <li>
-                <div class="icon-box">
-                  <i class="fa fa-twitter"></i>
-                </div>
-                <strong class="tweetlinker">
-                    @{tweet}
-                </strong>
-              </li>
-            @{end}
+          
+          {{$tweets}}
+
           </ul>
         </div>
       </div>
@@ -23,15 +16,17 @@
     <section class="cp-footer-content">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-sm-4">
-            <div class="cp-box"> <strong class="footer-logo"><a href="../../"><img src="../../../images/footer-logo.png" alt="img"></a></strong>
-              @{foreach post in repository.data.blog}
-                @{if post.key === repository.data.company.blog.feature}
-                  <p>@{!repository.data.blog[post.key].postExcerptMDd}...</p>
-                  <a href="../../../blog/@{post.key}" class="btn-style-1">Read More</a> </div>
-                @{fi}
-              @{end}
+          <div class="col-md-8 col-sm-8">
+            <div class="cp-box">
+              <strong class="footer-logo">
+                <a href="../../">
+                  <img src="../../../images/footer-logo.png" alt="img">
+                </a>
+              </strong>
+              {!! $excerpt !!}
+            </div>
           </div>
+          <!--
           <div class="col-md-4 col-sm-4">
             <div class="cp-box">
               <h3>Practice Areas</h3>
@@ -48,29 +43,14 @@
               </div>
             </div>
           </div>
+          -->
           <div class="col-md-4 col-sm-4">
             <div class="cp-box">
-              <h3>We Are Here</h3>
-              <address>
-              <p><i class="fa fa-bank"></i>@{repository.data.company.name},<br>@{!repository.data.company.address}</p>
-              <ul>
-                <li><i class="fa fa-phone"></i> Phone: @{repository.data.company.number}</li>
-                <li><i class="fa fa-print"></i>Fax: @{repository.data.company.fax}</li>
-                <li><i class="fa fa-envelope-o"></i><a href="mailto:">Email: @{repository.data.company.email_generic}@@{repository.data.server.host}</a></li>
-                <li><i class="fa fa-globe"></i><a href="@{repository.data.server.prot}@{repository.data.server.host}">@{repository.data.server.prot}@{repository.data.server.host}</a></li>
-              </ul>
-              </address>
-              <ul class="footer-social">
-                <li><a href="https://facebook.com/@{repository.data.company.social.fb}"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="https://twitter.com/@{repository.data.company.social.tw}"><i class="fa fa-twitter"></i></a></li>
-                <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>-->
-              </ul>
+              {{$local}}
             </div>
           </div>
         </div>
-        <div class="cp-copyright-section"> <strong class="copy">@{repository.data.company.name} &copy; @{repository.data.company.stats.yoi} - 2016, All Rights Reserved, Designed &amp; developed by <a href="@{repository.data.server.developer.url}">@{repository.data.server.developer.name}</a></strong> </div>
+        {{$copyright}}
       </div>
     </section>
     <!--FOOTER CONTENT AREA END--> 

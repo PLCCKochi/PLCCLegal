@@ -1,35 +1,34 @@
-  <!--BANNER START-->
-  <div id="inner-banner">
-    <div class="container">
-      <h1>@{repository.page.title}</h1>
-      <ol class="breadcrumb">
-        <li><a href="../../../">Home</a></li>
+@extends('kl.layout.master')
+@section('title', $model->name)
+@section('company', 'PLCC Legal')
+@section('content')
+  @component('kl.component.search')
+  @endcomponent
+  @component('kl.component.banner')
+    @slot('pagetitle')
+      Services
+    @endslot
         <li><a href="../../../services">Services</a></li>
-        <li class="active">@{repository.page.title}</li>
-      </ol>
-    </div>
-  </div>
-  <!--BANNER END--> 
-  
+        <li class="active">{{$model->name}}</li>
+  @endcomponent
   <!--MAIN START-->
   <div id="main"> 
-    
     <!--BLOG SECTION START-->
     <section class="cp-blog padding-top-60">
       <div class="container">
         <div class="row">
           <div class="col-md-9">
             <div class="cp-post-box">
-              <div class="frame cp-img-effect-1"><img src="../../../images/services/@{model.image}" alt="img"></div><br>
-              <h2>@{model.title}</h2>
+              <div class="frame cp-img-effect-1"><img src="../../../{{$model->image}}" alt="img"></div><br>
+              <h2>{{$model->name}}</h2>
               <div class="cp-text-box">
-                @{!model.infoContent}
+                {!!$model->info!!}
                 <div class="cp-share-post-row"> <strong class="title">Share Post:</strong>
                   <ul>
-                    <li><a target="_blank" href="https://www.facebook.com/sharer.php?u=https://@{repository.data.server.host}/services/@{repository.entity}"><i class="fa fa-facebook"></i></a></li>
-                    <li><a target="_blank" href="https://twitter.com/intent/tweet?url=https://@{repository.data.server.host}/services/@{repository.entity}&text=@{repository.page.title}&via=kochilaw&hashtags=kochilaw,plcc"><i class="fa fa-twitter"></i></a></li>
-                    <li><a target="_blank" href="https://plus.google.com/share?url=https://@{repository.data.server.host}/services/@{repository.entity}"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/shareArticle?url=https://@{repository.data.server.host}/services/@{repository.entity}&title=@{repository.page.title}"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/sharer.php?u={{$settings['cwebsite']}}/services/{{$model->id}}"><i class="fa fa-facebook"></i></a></li>
+                    <li><a target="_blank" href="https://twitter.com/intent/tweet?url={{$settings['cwebsite']}}/services/{{$model->id}}&text=@{repository.page.title}&via=kochilaw&hashtags=kochilaw,plcc"><i class="fa fa-twitter"></i></a></li>
+                    <li><a target="_blank" href="https://plus.google.com/share?url={{$settings['cwebsite']}}/services/{{$model->id}}"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/shareArticle?url={{$settings['cwebsite']}}/services/{{$model->id}}&title=@{repository.page.title}"><i class="fa fa-linkedin"></i></a></li>
                     <!--<li><a href=""><i class="fa fa-dribbble"></i></a></li>-->
                     <!--<li><a href=""><i class="fa fa-instagram"></i></a></li>-->
                     <!--<li><a href=""><i class="fa fa-pinterest-p"></i></a></li>-->
@@ -133,3 +132,4 @@
     <!--BLOG SECTION END--> 
   </div>
   <!--MAIN END-->
+@endsection

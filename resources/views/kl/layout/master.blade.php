@@ -34,11 +34,105 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body class="cp-theme-style-1">
+<body class="cp-theme-style-1 loading">
 <!--WRAPPER START-->
 <div id="wrapper"> 
+  @component('kl.component.header')
+    @slot('contact')
+      <li>Phone: <a href="tel:{{$settings['cphone']}}">{{$settings['cphone']}}</a></li>
+      <li>Email: <a href="mailto:{{$settings['cemail']}}">{{$settings['cemail']}}</a></li>
+    @endslot
+    <li><a href="../../../">Home</a></li>
+    <li>
+      <a href="../../../advocates">Advocates</a>
+      <ul class="dropdown-menu" role="menu">
+        @foreach ($advocates as $advocate)
+          <li><a href="../../../advocates/{{ $advocate->username }}">{{ $advocate->name }}</a>
+        @endforeach  
+      </ul>
+    </li>
+    <li>
+      <a href="../../../services">Services</a>
+      <ul class="dropdown-menu" role="menu">
+        @foreach ($services as $service)
+          <li><a href="../../../services/{{ $service->id }}">{{ $service->name }}</a>
+        @endforeach  
+      </ul>
+    </li>
+    <li>
+      <a href="../../../blog">Blog</a>
+      <ul class="dropdown-menu" role="menu">
+        @foreach ($posts as $post)
+          <li><a href="../../../blog/{{ $post->id }}">{{ $post->topic }}</a>
+        @endforeach  
+      </ul>
+    </li>
+    <li>
+      <a href="../../../clients">Clients</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="../../../testimonials">Testimonials</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="../../../contactus">Contact Us</a>
+    </li>
+  @endcomponent
   @yield('content')
+  @component('kl.component.footer')
+    @slot('tweets')
+      @foreach($tweets as $tweet)
+        @component('kl.component.tweet')
+          {{$tweet->tweet}}
+        @endcomponent
+      @endforeach
+    @endslot
+    @slot('excerpt')
+      @foreach($posts as $post)
+        @if($post->id == $settings['cpost'])
+          <div class="shaved10x">
+            {!! $post->content !!}
+          </div>
+          <a href="../../../blog/{{$post->id}}" class="btn-style-1">Read More</a>
+        @endif
+      @endforeach
+    @endslot
+    @slot('local')
+      @component('kl.component.local')
+        @slot('company')
+          {{$settings['cname']}}
+        @endslot
+        @slot('address')
+          {{$settings['caddress']}}
+        @endslot
+        @slot('phone')
+          {{$settings['cphone']}}
+        @endslot
+        @slot('website')
+          {{$settings['cwebsite']}}
+        @endslot
+        @slot('email')
+          {{$settings['cemail']}}
+        @endslot
+        @slot('fax')
+          {{$settings['cfax']}}
+        @endslot
+        @slot('tw')
+          {{$settings['tw']}}
+        @endslot
+        @slot('fb')
+          {{$settings['fb']}}
+        @endslot
+      @endcomponent
+    @endslot
+    @slot('copyright')
+      <div class="cp-copyright-section">
+        <strong class="copy">
+          {{$settings['cname']}} &copy; {{$settings['cyoi']}} - 2016. All Rights Reserved.<br><br>Designed &amp; developed by <a href="https://wayne.co.in">Wayne Enterprises Pvt Ltd</a></strong>
+      </div>
+    @endslot
+  @endcomponent
 </div>
+<div class="loadingmodal"><!-- Place at bottom of page --></div>
 <!--WRAPPER END--> 
 
 <!--JQUERY START--> 
@@ -68,6 +162,8 @@
 <script src="../../../js/wookmark.js"></script>
 <!--doTdoTdoT JS-->
 <script src="../../../js/jquery.dotdotdot.js"></script>
+<!--Shave JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/shave/1.0.4/shave.min.js"></script>
 <!--JQUERY END-->
 <!--AutoLinker JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autolinker/1.2.0/Autolinker.min.js"></script>
@@ -79,7 +175,7 @@
 <script type="text/javascript">
 	function opennewsearch(){
     window.open('https://www.google.com/search?q=' + document.getElementById('searchtext').value + ' site:@yield('host')', '_blank');
-}
+  }
 </script>
 </body>
 </html>

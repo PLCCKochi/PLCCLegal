@@ -1,37 +1,35 @@
-  <!--BANNER START-->
-  <div id="inner-banner">
-    <div class="container">
-      <h1>@{repository.page.title}</h1>
-      <ol class="breadcrumb">
-        <li><a href="../../../">Home</a></li>
-        <li><a href="../../../clients/">Clients</a></li>
-        <li class="active">@{repository.page.title}</li>
-      </ol>
-    </div>
-  </div>
-  <!--BANNER END--> 
-  
+@extends('kl.layout.master')
+@section('title', 'Testimonials')
+@section('company', 'PLCC Legal')
+@section('content')
+  @component('kl.component.search')
+  @endcomponent
+  @component('kl.component.banner')
+    @slot('pagetitle')
+      Testimonials
+    @endslot
+        <li class="active">Testimonials</li>
+  @endcomponent
   <!--MAIN START-->
   <div id="main"> 
-    
     <!--TESTIMONIALS SECTION START-->
     <section class="cp-testimonials">
       <div class="testimonials-style-1 padding-tb-60">
         <div class="container">
           <h2>Banks</h2>
           <div id="testimonial-style-1" class="owl-carousel">
-            @{foreach client in repository.data.client}
-              @{if client.value.category === 'Bank'}
+            @foreach($model as $testimonial)
+              @if ($testimonial->category == "Bank")
                 <div class="item">
-                  <div class="cp-box">
-                    <blockquote> <q>@{client.value.testimonial}</q>
-                      <div class="frame"><img alt="img" src="../../../images/pocs/@{client.value.pocpic}"></div>
-                      <div class="text-box"><strong class="name">@{client.value.poc}</strong><em>@{client.value.post}, @{client.value.company}</em></div>
+                  <div class="cp-box">                      
+                    <blockquote><q>{{$testimonial->testimonial}}</q>
+                    <div class="frame"><img alt="img" src="../../../{{$testimonial->pocpic}}"></div>
+                    <div class="text-box"><strong class="name">{{$testimonial->poc}}</strong><em>{{$testimonial->post}}, {{$testimonial->company}}</em></div>
                     </blockquote>
                   </div>
                 </div>
-              @{fi}
-            @{end}
+              @endif
+            @endforeach
           </div>
         </div>
       </div>
@@ -39,22 +37,22 @@
         <div class="container">
           <h2>Builders</h2>
           <div id="testimonial-style-2" class="owl-carousel">
-            @{foreach client in repository.data.client}
-              @{if client.value.category === 'Builder'}
+            @foreach($model as $testimonial)
+              @if ($testimonial->category == "Builders")
                 <div class="item">
                   <div class="cp-box">
                     <div class="frame">
                       <a href="#">
-                        <img src="../../../images/pocs/@{client.value.pocpic}" alt="img">
+                        <img src="../../../{{$testimonial->pocpic}}" alt="img">
                       </a>
-                      <strong class="name">@{client.value.poc}</strong>
-                      <em>@{client.value.post}, @{client.value.company}</em> 
+                      <strong class="name">{{$testimonial->poc}}</strong>
+                      <em>{{$testimonial->post}}, {{$testimonial->company}}</em> 
                     </div>
-                    <div class="cp-text-box"> <em>@{client.value.testimonial}</em> </div>
+                    <div class="cp-text-box"> <em>{{$testimonial->testimonial}}</em> </div>
                   </div>
                 </div>
-              @{fi}
-            @{end}
+              @endif
+            @endforeach
           </div>
         </div>
       </div>
@@ -62,18 +60,18 @@
         <div class="container">
           <h2>Corporates</h2>
           <div id="testimonial-style-3" class="owl-carousel">
-            @{foreach client in repository.data.client}
-              @{if client.value.category === 'Corporate'}
+            @foreach($model as $testimonial)
+              @if ($testimonial->category == "Corporate")
                 <div class="item">
                   <div class="cp-box-outer">
                     <div class="cp-box"> <i class="fa fa-quote-left"></i>
-                      <p>@{client.value.testimonial}</p>
+                      <p>{{$testimonial->testimonial}}</p>
                     </div>
-                    <div class="frame"><a href="#"><img src="../../../images/pocs/@{client.value.pocpic}" alt="img"></a></div>
-                    <strong class="name">@{client.value.poc}</strong> <em>@{client.value.post}, @{client.value.company}</em> </div>
+                    <div class="frame"><a href="#"><img src="../../../{{$testimonial->pocpic}}" alt="img"></a></div>
+                    <strong class="name">{{$testimonial->poc}}</strong> <em>{{$testimonial->post}}, {{$testimonial->company}}</em> </div>
                 </div>
-              @{fi}
-            @{end}
+              @endif
+            @endforeach
           </div>
         </div>
       </div>
@@ -81,3 +79,4 @@
     <!--TESTIMONIALS SECTION END--> 
   </div>
   <!--MAIN END-->
+@endsection

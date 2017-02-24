@@ -1,18 +1,17 @@
-  <!--BANNER START-->
-  <div id="inner-banner">
-    <div class="container">
-      <h1>@{repository.page.title}</h1>
-      <ol class="breadcrumb">
-        <li><a href="../../../">Home</a></li>
-        <li class="active"><a href="#">@{repository.page.title}</a></li>
-      </ol>
-    </div>
-  </div>
-  <!--BANNER END--> 
-  
+@extends('kl.layout.master')
+@section('title', 'Blog')
+@section('company', 'PLCC Legal')
+@section('content')
+  @component('kl.component.search')
+  @endcomponent
+  @component('kl.component.banner')
+    @slot('pagetitle')
+      Blog
+    @endslot
+        <li class="active">Blog</li>
+  @endcomponent
   <!--MAIN START-->
   <div id="main"> 
-    
     <!--BLOG SECTION START-->
     <section class="cp-blog padding-top-60">
       <div class="container">
@@ -21,120 +20,24 @@
             
           </div>
           <div class="col-md-8">
-            @{foreach post in repository.data.blog}
+            @foreach($posts as $post)
             <div class="cp-post-box">
-              <div class="frame cp-img-effect-1"> <a href="../../../blog/@{post.key}"><img src="../../../images/posts/@{post.value.image}" alt="img"></a> </div>
+              <div class="frame cp-img-effect-1"> <a href="../../../blog/{{$post->id}}"><img src="{{$post->photo}}" alt="img"></a> </div>
               <div class="cp-text-box">
-                <h2><a href="../../../blog/@{post.key}">@{post.value.title}</a></h2>
+                <h2><a href="../../../blog/{{$post->id}}">{{$post->title}}</a></h2>
                 <div class="detail-row">
                   <ul>
-                    <li><a href="../../../blog/@{post.key}">@{post.value.date}</a></li>
-                    <li>By: <a href="../../../advocate/@{post.value.author}">@{repository.data.advocate[post.value.author].name}</a></li>
+                    <li><a href="../../../blog/{{$post->id}}">{{$post->stamp}}</a></li>
+                    <!-- <li>By: <a href="../../../advocate/{{$post->advocate_id}}">Advocate Name</a></li> -->
                     <!--<li><a href="#">20 Comments</a></li>-->
                   </ul>
                 </div>
-                @{!post.value.postExtractMDd}
-                <a href="../../../blog/@{post.key}" class="btn-style-1">Read More</a> </div>
-            </div>
-            @{end}
-            <!--
-            <div class="cp-post-box">
-              <div class="frame cp-img-effect-1"> <a href="blog-detail.html"><img src="images/blog/blog-img-1.jpg" alt="img"></a> <strong class="sticky"><i class="fa fa-bullhorn"></i>Sticky Post</strong> </div>
-              <div class="cp-text-box">
-                <h3><a href="blog-detail.html">This is a Sticky Post</a></h3>
-                <div class="detail-row">
-                  <ul>
-                    <li><a href="#">23 November, 2015</a></li>
-                    <li>By:<a href="#"> John Patrick</a></li>
-                    <li><a href="#">27 Comments</a></li>
-                  </ul>
+                <div class="shaved10x">
+                {!! $post->content !!}
                 </div>
-                <p class="excerpt">Apart and limply monstrous far much added you oyster bawled lost in hey due so armadillo tpangolin sexual aboard much alas dragonfly be more some fallacious and barbarous a less much more sat before fishily thus somberly or restful flexed best wherever squinted drew much oh sloth as some when scornfully cut involuntarily at audible. Apart and limply monstrous far much added you oyster bawled lost in hey due so armadillo tpangolin sexual aboard much alas dragonfly be more some fallacious and barbarous a less much more sat before fishily thus somberly or restful flexed best wherever squinted drew much oh sloth as some when scornfully cut involuntarily at audible.</p>
-                <a href="blog-detail.html" class="btn-style-1">Read More</a> </div>
+                <a href="../../../blog/{{$post->id}}" class="btn-style-1">Read More</a> </div>
             </div>
-            <div class="cp-post-box">
-              <div class="frame cp-img-effect-1"> <a href="blog-detail.html"><img src="images/blog/blog-img-2.jpg" alt="img"></a> </div>
-              <div class="cp-text-box">
-                <h3><a href="blog-detail.html">Lack of treatment for an illness while at work</a></h3>
-                <div class="detail-row">
-                  <ul>
-                    <li><a href="#">26 November, 2015</a></li>
-                    <li>By:<a href="#"> Allen Patrick</a></li>
-                    <li><a href="#">20 Comments</a></li>
-                  </ul>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                <a href="blog-detail.html" class="btn-style-1">Read More</a> </div>
-            </div>
-            <div class="cp-post-box">
-              <div class="shadow-box">
-                <div class="cp-text-box">
-                  <h3><a href="blog-detail.html">This post is without an image.</a></h3>
-                  <div class="detail-row">
-                    <ul>
-                      <li><a href="#">26 November, 2015</a></li>
-                      <li>By:<a href="#">Roy Miller</a></li>
-                      <li><a href="#">17 Comments</a></li>
-                    </ul>
-                  </div>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores </p>
-                  <a href="blog-detail.html" class="btn-style-1">Read More</a> </div>
-              </div>
-            </div>
-            <div class="cp-post-box">
-              <div class="frame">
-                <iframe src="https://player.vimeo.com/video/55532708"></iframe>
-              </div>
-              <div class="cp-text-box">
-                <h3><a href="blog-detail.html">Sexual Assault on College Campuses</a></h3>
-                <div class="detail-row">
-                  <ul>
-                    <li><a href="#">26 November, 2015</a></li>
-                    <li>By:<a href="#"> Allen Patrick</a></li>
-                    <li><a href="#">20 Comments</a></li>
-                  </ul>
-                </div>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. </p>
-                <a href="blog-detail.html" class="btn-style-1">Read More</a> </div>
-            </div>
-            <div class="cp-post-box">
-              <div id="blog-slider" class="owl-carousel owl-theme">
-                <div class="item">
-                  <div class="frame"> <a href="#"><img src="images/blog/blog-img-3.jpg" alt="img"></a> </div>
-                </div>
-                <div class="item">
-                  <div class="frame"> <a href="#"><img src="images/blog/blog-img-4.jpg" alt="img"></a> </div>
-                </div>
-              </div>
-              <div class="cp-text-box">
-                <h3><a href="blog-detail.html">Court ordered to husband to pay proper monthly expense of his family.</a></h3>
-                <div class="detail-row">
-                  <ul>
-                    <li><a href="#">26 November, 2015</a></li>
-                    <li>By:<a href="#"> Allen Patrick</a></li>
-                    <li><a href="#">20 Comments</a></li>
-                  </ul>
-                </div>
-                <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                <a href="blog-detail.html" class="btn-style-1">Read More</a> </div>
-            </div>
-            <div class="cp-post-box">
-              <div class="shadow-box">
-                <div class="cp-text-box"> <a href="blog-detail.html" class="link"><i class="fa fa-link"></i></a>
-                  <div class="hold">
-                    <h3><a href="blog-detail.html">http://themeforest.net/items/lawyers.we.fight</a></h3>
-                    <div class="detail-row">
-                      <ul>
-                        <li><a href="#">26 November, 2015</a></li>
-                        <li>By:<a href="#">Roy Miller</a></li>
-                        <li><a href="#">17 Comments</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            -->
+            @endforeach
             <!--PAGINATION START-->
             <!--
             <div class="cp-pagination">
@@ -283,3 +186,4 @@
     <!--BLOG SECTION END--> 
   </div>
   <!--MAIN END--> 
+@endsection
