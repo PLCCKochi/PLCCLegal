@@ -32,3 +32,5 @@ Route::get('/twitter', function()
     }
     return DB::table('tweets')->get();
 });
+
+Route::get('/test'               , 'Render\Test@index');

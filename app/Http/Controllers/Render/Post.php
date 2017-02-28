@@ -15,7 +15,6 @@ class Post extends Controller
     }
     public function detail($postID)
     {
-
         $postIQ = DB::table('posts')->where('id', $postID)->get();
         if ($postIQ->count() != 0){
             return Aggregator::Build('kl.blog.post', $postIQ->first());

@@ -15,9 +15,10 @@
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
 {
   // Backpack\CRUD: Define the resources for the entities you want to CRUD.
-    CRUD::resource('advocate', 'Admin\AdvocateCrudController');
+    CRUD::resource('sms', 'Admin\SMSCrudController');
     CRUD::resource('post', 'Admin\PostCrudController');
     CRUD::resource('client', 'Admin\ClientCrudController');
     CRUD::resource('service', 'Admin\ServiceCrudController');
+    CRUD::resource('advocate', 'Admin\AdvocateCrudController');
     CRUD::resource('testimonial', 'Admin\TestimonialCrudController');
 });

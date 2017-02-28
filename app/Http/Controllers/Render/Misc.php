@@ -9,7 +9,7 @@ use App\Libs\Data\Aggregator;
 
 class Misc extends Controller
 {
-    public function contactus()
+    public function contact()
     {
         return Aggregator::Build('kl.misc.contact', []);
     }

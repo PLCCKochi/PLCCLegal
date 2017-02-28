@@ -1,23 +1,24 @@
 @extends('kl.layout.master')
-
-@section('title', 'Page Title')
-@section('company', 'Kochi Law')
-
+@section('title', 'Home')
+@section('company', 'PLCC Legal')
 @section('content')
-<!--BANNER START-->
+  @component('kl.component.search')
+  @endcomponent
+  <!--BANNER START-->
   <div id="cp-banner">
     <ul id="cp-home-banner">
-      @{foreach banner in model.banner}
-        <li> <img src="../../../images/@{banner.image}" alt="img">
-          <div class="caption"> <strong class="title">@{banner.text1}<span><!--Pro--></span></strong>
-            <h1>@{banner.text2}</h1>
+      <!--@{foreach banner in model.banner}-->
+        <li>
+          <img src="../../../{{$settings->indexbannerimage}}" alt="img">
+          <div class="caption"> <strong class="title">{{$settings->indexbannertext1}}<span><!--Pro--></span></strong>
+            <h1>{{$settings->indexbannertext2}}</h1>
             <div class="banner-btn-row">
-              <a href="@{banner.buttons[0].link}" class="btn-style-1">@{banner.buttons[0].title}</a>
-              <a href="@{banner.buttons[1].link}" class="btn-style-1 btn-style-2">@{banner.buttons[1].title}</a>
+              <a href="{{$settings->indexbannerbttn1}}" class="btn-style-1">Learn More</a>
+              <a href="{{$settings->indexbannerbttn2}}" class="btn-style-1 btn-style-2">Contact Us</a>
             </div>
           </div>
         </li>
-      @{end}
+      <!--@{end}-->
       <!--
       <li> <img src="images/banner-img-2.jpg" alt="img">
         <div class="caption"> <strong class="title">We are Lawyers <span>Pro</span></strong>
@@ -38,17 +39,18 @@
         <div class="row">
           <div class="col-md-6">
             <div class="cp-heading-1">
-              <h2>Welcome to <span>@{repository.data.company.name}</span></h2>
-              <em>@{repository.data.company.tagline}</em></div>
+              <h2>Welcome to <span>{{$settings->cname}}</span></h2>
+              <em>{{$settings->motto}}</em>
+            </div>
             <div class="cp-outer-box">
               @{foreach step in model.threestep}
-              <div class="cp-box">
-                <div class="icon-box"><img src="../../../images/icon-img-@{index+1}.jpg" alt="img"></div>
-                <div class="cp-text-box">
-                  <h3><a href="#">@{step.title}</a></h3>
-                  <p>@{step.description}</p>
+                <div class="cp-box">
+                  <div class="icon-box"><img src="../../../images/icon-img-@{index+1}.jpg" alt="img"></div>
+                  <div class="cp-text-box">
+                    <h3><a href="#">@{step.title}</a></h3>
+                    <p>@{step.description}</p>
+                  </div>
                 </div>
-              </div>
               @{end}
             </div>
           </div>

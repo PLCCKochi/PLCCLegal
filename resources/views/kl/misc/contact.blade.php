@@ -1,14 +1,14 @@
 @extends('kl.layout.master')
-@section('title', 'Clients')
+@section('title', 'Contact Us')
 @section('company', 'PLCC Legal')
 @section('content')
   @component('kl.component.search')
   @endcomponent
   @component('kl.component.banner')
     @slot('pagetitle')
-      Our Clients
+      Contact Us
     @endslot
-        <li class="active">Clients</li>
+        <li class="active">Contact Us</li>
   @endcomponent
   <!--MAIN START-->
   <div id="main"> 
@@ -49,12 +49,12 @@
               <p>Feel free to drop by at any time. We are open 6 days a week, from 9am to 6pm. Even if we aren't open, you may give us a ring and we'll be able to work something out.</p>
               <address>
               <ul>
-                <li> <i class="fa fa-home"></i> <b>@{!repository.data.company.address}</b> </li>
-                <li><i class="fa fa-phone"></i>@{repository.data.company.number}</li>
-                <li><i class="fa fa-print"></i>@{repository.data.company.fax}</li>
-                <li><i class="fa fa-envelope-o"></i><a href="mainto:@{repository.data.company.email_generic}@@{repository.data.server.host}"></a>@{repository.data.company.email_generic}@@{repository.data.server.host}</li>
+                <li> <i class="fa fa-home"></i><b>{{$settings->caddress}}</b> </li>
+                <li><i class="fa fa-phone"></i>{{$settings->cphone}}</li>
+                <li><i class="fa fa-print"></i>{{$settings->cfax}}</li>
+                <li><i class="fa fa-envelope-o"></i><a href="mainto:{{$settings->cemail}}"></a>{{$settings->cemail}}</li>
                 <!--<li><i class="fa fa-skype"></i>001 (407) 901-6400</li>-->
-                <li><i class="fa fa-globe"></i><a href="http://@{repository.data.server.host}">@{repository.data.server.host}</a></li>
+                <li><i class="fa fa-globe"></i><a href="{{$settings->cwebsite}}">{{$settings->cwebsite}}</a></li>
               </ul>
               </address>
             </div>

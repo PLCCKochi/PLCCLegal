@@ -39,8 +39,8 @@
 <div id="wrapper"> 
   @component('kl.component.header')
     @slot('contact')
-      <li>Phone: <a href="tel:{{$settings['cphone']}}">{{$settings['cphone']}}</a></li>
-      <li>Email: <a href="mailto:{{$settings['cemail']}}">{{$settings['cemail']}}</a></li>
+      <li>Phone: <a href="tel:{{$settings->cphone}}">{{$settings->cphone}}</a></li>
+      <li>Email: <a href="mailto:{{$settings->cemail}}">{{$settings->cemail}}</a></li>
     @endslot
     <li><a href="../../../">Home</a></li>
     <li>
@@ -88,7 +88,7 @@
     @endslot
     @slot('excerpt')
       @foreach($posts as $post)
-        @if($post->id == $settings['cpost'])
+        @if($post->id == $settings->cpost)
           <div class="shaved10x">
             {!! $post->content !!}
           </div>
@@ -99,35 +99,35 @@
     @slot('local')
       @component('kl.component.local')
         @slot('company')
-          {{$settings['cname']}}
+          {{$settings->cname}}
         @endslot
         @slot('address')
-          {{$settings['caddress']}}
+          {{$settings->caddress}}
         @endslot
         @slot('phone')
-          {{$settings['cphone']}}
+          {{$settings->cphone}}
         @endslot
         @slot('website')
-          {{$settings['cwebsite']}}
+          {{$settings->cwebsite}}
         @endslot
         @slot('email')
-          {{$settings['cemail']}}
+          {{$settings->cemail}}
         @endslot
         @slot('fax')
-          {{$settings['cfax']}}
+          {{$settings->cfax}}
         @endslot
         @slot('tw')
-          {{$settings['tw']}}
+          {{$settings->tw}}
         @endslot
         @slot('fb')
-          {{$settings['fb']}}
+          {{$settings->fb}}
         @endslot
       @endcomponent
     @endslot
     @slot('copyright')
       <div class="cp-copyright-section">
         <strong class="copy">
-          {{$settings['cname']}} &copy; {{$settings['cyoi']}} - 2016. All Rights Reserved.<br><br>Designed &amp; developed by <a href="https://wayne.co.in">Wayne Enterprises Pvt Ltd</a></strong>
+          {{$settings->cname}} &copy; {{$settings->cyoi}} - 2016. All Rights Reserved.<br><br>Designed &amp; developed by <a href="https://wayne.co.in">Wayne Enterprises Pvt Ltd</a></strong>
       </div>
     @endslot
   @endcomponent

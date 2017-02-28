@@ -31,6 +31,7 @@
           <li><a href="{{ url('admin/client') }}"><i class="fa fa-users"></i> <span>Manage Clients</span></a></li>
           <li><a href="{{ url('admin/testimonial') }}"><i class="fa fa-comments"></i> <span>Manage Testimonials</span></a></li>
           <li><a href="{{ url('admin/service') }}"><i class="fa fa-gears"></i> <span>Manage Services</span></a></li>
+          <li><a href="{{ url('admin/sms') }}"><i class="fa fa-gears"></i> <span>Manage SMS Subscribers</span></a></li>
           <!-- Entries -->
           <!-- ======================================= -->
           <li class="header">{{ trans('backpack::base.user') }}</li>
