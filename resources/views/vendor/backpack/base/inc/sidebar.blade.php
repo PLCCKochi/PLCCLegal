@@ -32,8 +32,8 @@
           <li><a href="{{ url('admin/testimonial') }}"><i class="fa fa-comments"></i> <span>Manage Testimonials</span></a></li>
           <li><a href="{{ url('admin/service') }}"><i class="fa fa-gears"></i> <span>Manage Services</span></a></li>
           <li class="header">SMS Settings</li>
-          <li><a href="{{ url('admin/sms') }}"><i class="fa fa-gears"></i> <span>Manage SMS Subscribers</span></a></li>
-          <li><a href="{{ url('admin/smsrep') }}"><i class="fa fa-gears"></i> <span>Manage SMS Subscribers</span></a></li>
+          <li><a href="{{ url('admin/sms') }}"><i class="fa fa-commenting"></i> <span>Manage SMS Subscribers</span></a></li>
+          <li><a href="{{ url('admin/smsrep') }}"><i class="fa fa-text-width"></i> <span>Manage SMS Replacements</span></a></li>
           <!-- Entries -->
           <!-- ======================================= -->
           <li class="header">{{ trans('backpack::base.user') }}</li>
