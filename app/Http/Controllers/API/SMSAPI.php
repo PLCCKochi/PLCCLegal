@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Libs\Data\Aggregator;
 
-class SMSUsersAPI extends Controller {
+class SMSAPI extends Controller {
 	public function user()
     {
         $SMSUsers = DB::table('sms')->get();
