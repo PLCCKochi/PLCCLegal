@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\DB;
 use App\Libs\Data\Aggregator;
 
 class SMSUsersAPI extends Controller {
-	public function json()
+	public function user()
     {
         $SMSUsers = DB::table('sms')->get();
         return $SMSUsers;
+    }	
+    public function reps()
+    {
+        $SMSReps = DB::table('sms_rep')->get();
+        return $SMSReps;
     }	
 }
