@@ -54,8 +54,15 @@ class AdvocateCrudController extends CrudController {
 		$this->crud->addField([
 			'name' => 'proexp',
 			'label' => "Professional Experience",
-			'type' => 'summernote'
+			'type' => 'wysiwyg'
 		]);
+		/*
+		wysiwyg
+		tinymce
+		ckeditor
+		summernote
+		simplemde
+		*/
 		$this->crud->addField([
 			'name' => 'caption',
 			'label' => "Caption",
@@ -106,14 +113,6 @@ class AdvocateCrudController extends CrudController {
 			'type' => 'email',
 			'suffix' => 'eg, reji@plcclegal.com'
 		]);
-		/*
-		wysiwyg
-		tinymce
-		ckeditor
-		summernote
-
-		simplemde
-		*/
     }
 
 	public function store(StoreRequest $request)

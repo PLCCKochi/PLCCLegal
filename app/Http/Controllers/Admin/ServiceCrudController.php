@@ -40,7 +40,7 @@ class ServiceCrudController extends CrudController {
 		$this->crud->addField([
 			'name' => 'info',
 			'label' => "Service Details",
-			'type' => 'summernote'
+			'type' => 'wysiwyg'
 		]);
 
     }

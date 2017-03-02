@@ -56,7 +56,7 @@ class PostCrudController extends CrudController {
 		$this->crud->addField([
 			'name' => 'content',
 			'label' => "The post",
-			'type' => 'summernote'
+			'type' => 'wysiwyg'
 		]);
 		$this->crud->addField([
 			'name' => 'stamp',

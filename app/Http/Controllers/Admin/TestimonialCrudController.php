@@ -53,7 +53,7 @@ class TestimonialCrudController extends CrudController {
 		$this->crud->addField([
 			'name' => 'testimonial',
 			'label' => "Testimonial",
-			'type' => 'summernote'
+			'type' => 'wysiwyg'
 		]);
 		$this->crud->enableExportButtons();
     }
