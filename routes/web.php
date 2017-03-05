@@ -19,7 +19,7 @@ Route::get('/welcome', function () {
 Route::get('/twitter', function()
 {
 	DB::table('tweets')->truncate();
-    $tweets = Twitter::getUserTimeline(['screen_name' => 'i_athul', 'count' => 25, 'format' => 'object']);
+    $tweets = Twitter::getUserTimeline(['screen_name' => 'PLCCLegal', 'count' => 25, 'format' => 'object']);
     foreach ($tweets as $tweet) {
     	$priority = $tweet->retweet_count;
     	$priority *= 5;
