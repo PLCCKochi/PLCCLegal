@@ -19,7 +19,7 @@
           <h2>Banks</h2>
           <div id="testimonial-style-1" class="owl-carousel">
             @foreach($model as $testimonial)
-              @if ($testimonial->category == "Bank")
+              @if ($testimonial->category == "Banks")
                 <div class="item">
                   <div class="cp-box">                      
                     <blockquote><q>{{$testimonial->testimonial}}</q>
@@ -61,7 +61,7 @@
           <h2>Corporates</h2>
           <div id="testimonial-style-3" class="owl-carousel">
             @foreach($model as $testimonial)
-              @if ($testimonial->category == "Corporate")
+              @if ($testimonial->category == "Corporates")
                 <div class="item">
                   <div class="cp-box-outer">
                     <div class="cp-box"> <i class="fa fa-quote-left"></i>
