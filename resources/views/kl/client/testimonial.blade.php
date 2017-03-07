@@ -22,7 +22,7 @@
               @if ($testimonial->category == "Banks")
                 <div class="item">
                   <div class="cp-box">                      
-                    <blockquote><q>{{$testimonial->testimonial}}</q>
+                    <blockquote><q>{!$testimonial->testimonial!}</q>
                     <div class="frame"><img alt="img" src="../../../{{$testimonial->pocpic}}"></div>
                     <div class="text-box"><strong class="name">{{$testimonial->poc}}</strong><em>{{$testimonial->post}}, {{$testimonial->company}}</em></div>
                     </blockquote>
@@ -48,7 +48,7 @@
                       <strong class="name">{{$testimonial->poc}}</strong>
                       <em>{{$testimonial->post}}, {{$testimonial->company}}</em> 
                     </div>
-                    <div class="cp-text-box"> <em>{{$testimonial->testimonial}}</em> </div>
+                    <div class="cp-text-box"> <em>{!$testimonial->testimonial!}</em> </div>
                   </div>
                 </div>
               @endif
@@ -65,7 +65,7 @@
                 <div class="item">
                   <div class="cp-box-outer">
                     <div class="cp-box"> <i class="fa fa-quote-left"></i>
-                      <p>{{$testimonial->testimonial}}</p>
+                      <p>{!$testimonial->testimonial!}</p>
                     </div>
                     <div class="frame"><a href="#"><img src="../../../{{$testimonial->pocpic}}" alt="img"></a></div>
                     <strong class="name">{{$testimonial->poc}}</strong> <em>{{$testimonial->post}}, {{$testimonial->company}}</em> </div>
