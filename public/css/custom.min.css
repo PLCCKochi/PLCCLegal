@@ -1578,6 +1578,7 @@ strong.burger-logo a {
 }
 .cp-choose-lawyers .left-box .frame img {
 	display: block;
+
 	width: 100%;
 }
 .choose-logo-box {
@@ -4670,8 +4671,10 @@ strong.footer-logo a {
 	-webkit-box-sizing: border-box;
 }
 .cp-frame-box .frame img {
-	display: block;
-	width: 100%;
+	/*display: block;*/
+	width : 100%;
+	height: 100%;
+	overflow: hidden;
 }
 .attorney-details .cp-text-box {
 	float: left;
