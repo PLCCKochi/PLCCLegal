@@ -5189,3 +5189,7 @@ body.loading {
 body.loading .loadingmodal {
     display: block;
 }
+
+img {
+    object-fit: cover;
+}
