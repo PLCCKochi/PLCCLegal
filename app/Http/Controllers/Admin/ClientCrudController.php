@@ -63,8 +63,13 @@ class ClientCrudController extends CrudController {
 		$this->crud->addField([
 			'name' => 'category',
 			'label' => "Company Category",
-			'type' => 'text',
-			'suffix' => 'eg. IT Services'
+			'type' => 'select2_from_array',
+    		'options' => [
+    			'Corporates'=>'Corporates',
+    			'Builders' => 'Builders',
+    			'Banks'=>'Banks'    			
+    		],
+    		'allows_null' => false,
 		]);
 		$this->crud->addField([
 			'name' => 'year',

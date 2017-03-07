@@ -26,3 +26,4 @@ Route::get('/404'				, 'Render\Misc@error');
 //Public API
 Route::get('/sms'				, 'API\SMSAPI@user');
 Route::get('/smsrep'			, 'API\SMSAPI@reps');
+Route::get('/smsstatus'			, 'API\SMSAPI@stat');

@@ -12,10 +12,15 @@ class SMSAPI extends Controller {
     {
         $SMSUsers = DB::table('sms')->get();
         return $SMSUsers;
-    }	
+    }   
     public function reps()
     {
         $SMSReps = DB::table('sms_rep')->get();
         return $SMSReps;
+    }   
+    public function stat()
+    {
+        $SMSStatus = array('balance' => 50);
+        return $SMSStatus;
     }	
 }
