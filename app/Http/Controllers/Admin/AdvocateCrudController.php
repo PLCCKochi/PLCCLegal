@@ -54,7 +54,7 @@ class AdvocateCrudController extends CrudController {
 		$this->crud->addField([
 			'name' => 'proexp',
 			'label' => "Professional Experience",
-			'type' => 'wysiwyg'
+			'type' => 'simplemde'
 		]);
 		/*
 		wysiwyg
